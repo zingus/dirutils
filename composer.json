@@ -1,5 +1,5 @@
 {
-    "name": "zingus/dirwalker",
+    "name": "zingus/dirutils",
     "description": "Recursive processing of directories",
     "type": "library",
     "license":"GPL-3.0-or-later",
