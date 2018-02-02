@@ -1,6 +1,6 @@
 {
     "name": "zingus/dirutils",
-    "description": "Recursive processing of directories",
+    "description": "Utilities to directory walking and creation",
     "type": "library",
     "license":"GPL-3.0-or-later",
     "authors": [
