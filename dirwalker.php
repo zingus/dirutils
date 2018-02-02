@@ -1,4 +1,6 @@
 <?php
+namespace DirUtils;
+
 class DirWalker
 {
   function walk($rootdir)
