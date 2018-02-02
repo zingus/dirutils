@@ -1,6 +1,6 @@
 {
     "name": "zingus/dirutils",
-    "description": "Utilities to directory walking and creation",
+    "description": "Directory walking and creation library",
     "type": "library",
     "license":"GPL-3.0-or-later",
     "authors": [
