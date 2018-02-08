@@ -3,12 +3,17 @@ namespace DirUtils;
 
 class Walker
 {
-  function __construct($rootdir)
+  function walk($rootDir,$bfs=false)
   {
-    $this->root=$rootdir;
-    $this->walkDir('.');
+    $this->root=$rootDir
+    $this->bfs=$bfs;
+    if(!$bfs)
+      return $this->walkRecursive($rootDir);
+    else 
+      return $this->walkBFS($rootDir);
   }
-  private function walkDir($rel)
+
+  private function walkRecursive($rel)
   {
     $this->full=$this->root.'/'.$rel;
     $this->full=preg_replace('#/\.(/)|/\.$#','\1',$this->full);
@@ -25,13 +30,18 @@ class Walker
           continue 2;
         default:
           $fn="$rel/$entry";
-          $this->walkDir($fn);
+          $this->walkRecursive($fn);
       }  
     }
     closedir($dp);
   }
+  
+  private function walkBFS($rel)
+  {
+    //PLANNED unimplemented
+  }
 
-  function action($filename)
+  public function action($filename)
   {
     echo "$filename\n";
   }
@@ -39,5 +49,5 @@ class Walker
 
 /*
 $dw=new dirwalker();
-$dw->__construct(realpath('.'));
+$dw->walk(realpath('.'));
 */
