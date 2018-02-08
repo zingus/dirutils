@@ -3,9 +3,9 @@
     <?php
 
     require_once "vendor\autoload.php";
-    use DirUtils\DirWalker;
+    use DirUtils\Walker;
 
-    class walker extends DirWalker {
+    class walker extends Walker {
       function action($filename,$fullpath,$root) {
       }
     }
