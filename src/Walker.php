@@ -3,21 +3,21 @@ namespace DirUtils;
 
 class Walker
 {
-  function walk($rootdir)
+  function __construct($rootdir)
   {
-    $this->_root=$rootdir;
-    $this->_walk('.');
+    $this->root=$rootdir;
+    $this->walkDir('.');
   }
-  function _walk($rel)
+  private function walkDir($rel)
   {
-    $full=$this->_root.'/'.$rel;
-    $full=preg_replace('#/\.(/)|/\.$#','\1',$full);
+    $this->full=$this->root.'/'.$rel;
+    $this->full=preg_replace('#/\.(/)|/\.$#','\1',$this->full);
 
     //$this->action($full);
-    call_user_func(array($this,'action'),$rel,$full,$this->_root);
-    if(!is_dir($full)) return;
+    call_user_func(array($this,'action'),$rel);
+    if(!is_dir($this->full)) return;
 
-    $dp=opendir($full);
+    $dp=opendir($this->full);
     while($entry=readdir($dp)) {
       switch($entry) {
         case '.':
@@ -25,7 +25,7 @@ class Walker
           continue 2;
         default:
           $fn="$rel/$entry";
-          $this->_walk($fn);
+          $this->walkDir($fn);
       }  
     }
     closedir($dp);
@@ -39,5 +39,5 @@ class Walker
 
 /*
 $dw=new dirwalker();
-$dw->walk(realpath('.'));
+$dw->__construct(realpath('.'));
 */
