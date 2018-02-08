@@ -6,7 +6,7 @@
     use DirUtils\DirWalker;
 
     class walker extends DirWalker {
-      function action($filename){
+      function action($filename,$fullpath,$root) {
       }
     }
 
