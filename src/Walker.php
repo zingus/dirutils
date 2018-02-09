@@ -6,7 +6,7 @@ class Walker
   function walk($rootDir,$bfs=false)
   {
     // WARNING bfs is unimplemented
-    $this->root=$rootDir
+    $this->root=$rootDir;
     $this->bfs=$bfs;
     if(!$bfs)
       return $this->walkRecursive($rootDir);
